@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class CAr : MonoBehaviour
 {
     public float acceleration;
     public float rotationSpeed;
     public float maxSpeed;
+    public Text txtSpeed;
 
     Rigidbody rigid;
     void Start()
@@ -19,6 +20,8 @@ public class CAr : MonoBehaviour
         AddSpeed();
         AddRotation();
         AdjustVelocity();
+
+        txtSpeed.text = "Speed: " + rigid.velocity.magnitude.ToString("0.##") + " Km/h";
     }
 
     void AddSpeed()
