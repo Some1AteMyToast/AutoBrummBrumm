@@ -6,12 +6,9 @@ using UnityEngine.UI;
 public class Ziellinie : MonoBehaviour
 {
     public Text txtBestTime;
+    public Text count;
     float time = 0;
     float bestTime = float.MaxValue;
-    void Start()
-    {
-        
-    }
 
     void Update()
     {
@@ -20,7 +17,9 @@ public class Ziellinie : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(time < bestTime)
+        Counterdreck.currentcount = Counterdreck.maxcount;
+        count.text = "Counter: " + Counterdreck.currentcount;
+        if (time < bestTime)
         {
             bestTime = time;
             txtBestTime.text = "Best Time: " + bestTime.ToString("0.##") + " Sekunden";
@@ -28,3 +27,9 @@ public class Ziellinie : MonoBehaviour
         time = 0;
     }
 }
+
+    public static class Counterdreck
+    {
+        public static int maxcount = 3;
+        public static int currentcount;
+    }
